@@ -77,7 +77,7 @@ var width = Dimensions.get('window').width;
 		});
 
 		import React, { Component } from 'react';
-		import { Text, Navigator, AppRegistry, TouchableHighlight, Image, StyleSheet, View, Dimensions, TextInput } from 'react-native';
+		import { Text, Navigator, AppRegistry, TouchableHighlight, Image, StyleSheet, View, Dimensions, TextInput, Alert, ListView } from 'react-native';
 
 		class MyButton extends React.Component {
 			render() {
@@ -120,7 +120,7 @@ var NavigationBarRouteMapper = {
 		else { return null }
 	},
 RightButton(route, navigator, index, navState) {
-	if(index ==1) {
+	if(route.component ==AnswerEdit) {
 		return (
 			<TouchableHighlight style={{backgroundColor:'transparent'}}
 			underlayColor="transparent"
@@ -130,26 +130,48 @@ RightButton(route, navigator, index, navState) {
 			source={require('./img/check_btn.png')}/>
 			</TouchableHighlight>
 			)}
-	}
-};
+		else if(index == 0) {
+			return (
+				<TouchableHighlight style={{backgroundColor:'transparent'}}
+				underlayColor="transparent"
+				onPress={() => Alert.alert(
+					'메뉴',
+					null,
+					[
+					{text: '지난 이야기', onPress: () => {navigator.push({
+						component: AnswerList,
+						passProps: {
+							id: 'AnswerList',
+						},
+						onPress: this.onPress,
+						rightText: 'ALERT!'
+					})}},
+					{text: '설정', onPress: () => console.log('Bar Pressed!')},
+					{text: '취소', onPress: () => console.log('Bar Pressed!')}
+					]
+					)}>
+				<Image
+				style={{overflow:'visible', width:30, height:30, marginRight:18, marginTop:5}}
+				source={require('./img/menu_btn.png')}/>
+				</TouchableHighlight>
+				)
+			}
+		}
+	};
 
     //답변 작성 클래스
     class AnswerEdit extends Component {
     	constructor(props) {
     		super(props);
-this.state = {
-	text: '',
-};
-this.writeProcess = this.writeProcess.bind(this);
-this.onPress = this.onPress.bind(this);
-}
-
-onPress() {
-	console.log("onPress 진입");
+			this.state = {
+				text: '',
+			};
+			this.writeProcess = this.writeProcess.bind(this);
 }
 writeProcess() {
 	console.log("writeProcess 진입");
 }
+
 render() {
 	return (
 	<View style ={styles.imageContainer}>
@@ -161,10 +183,10 @@ render() {
 	<View style={styles.answerEditBox}>
 	<TextInput
 	autoFocus={true}
-	placeholder="답변을 써 주세요."
+	placeholder="* 이 곳에 당신의 이야기를 적어보세요.`"
 	style={styles.multiline}
 	multiline = {true}
-	numberOfLines = {4}
+
 	onChangeText={(text) => this.setState({text})}
 	value={this.state.text}
 	/>
@@ -190,6 +212,7 @@ this._onPressButton = this._onPressButton.bind(this)
 }
 
 render() {
+
 	var movie = MOCKED_QUESTIONS_DATA[this.position];
 	return (
 	<View style ={styles.imageContainer}>
@@ -231,7 +254,7 @@ gotoNext() {
 	this.props.navigator.push({
 		component: AnswerEdit,
 		passProps: {
-			id: 'MY ID',
+			id: 'AnswerEdit',
 		},
 		onPress: this.onPress,
 		rightText: 'ALERT!'
@@ -253,6 +276,36 @@ _onPressButton() {
 		position : pos
 	});
 }
+}
+
+
+class AnswerList extends Component {
+	constructor(props) {
+		super(props);
+
+		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		this.state = {
+			dataSource: ds.cloneWithRows(['글1', '글2','글3','글4']),
+		};
+	}
+
+	render() {
+
+		var movie = MOCKED_QUESTIONS_DATA[this.position];
+		return (
+			<View style ={styles.imageContainer}>
+			<Image
+			style={styles.backgroundImage}
+			source={require('./img/main_bg_img.png')}>
+
+			<ListView style={{marginTop:80, marginLeft:18}}
+			dataSource={this.state.dataSource}
+			renderRow={(rowData) => <Text style={{color:'white'}}>{rowData}</Text>}
+			/>
+			</Image>
+			</View>
+			);
+	}
 }
 
 
