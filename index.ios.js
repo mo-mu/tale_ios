@@ -564,4 +564,4 @@ var NavigationBarRouteMapper = {
     return <route.component {...route.passProps} navigator={navigator} />}
   }
 
-  AppRegistry.registerComponent('AwesomeProject', () => App);
+  AppRegistry.registerComponent('tale', () => App);

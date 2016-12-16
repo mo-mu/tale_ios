@@ -1,46 +1,53 @@
-import React, { Component } from 'react';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
+import React, { Component } from 'react';
 import {
   AppRegistry,
-  View,
-  StyleSheet
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 
-import AwesomeButton from 'react-native-awesome-button';
-
+export default class tale extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    margin: 20,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
 
-
-class Simple extends Component {
-
-  handleButtonPress() {
-    console.log('I was pressed')
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <AwesomeButton states={{
-                        default: {
-                          text: 'Press me',
-                          onPress: this.handleButtonPress,
-                          backgroundColor: '#1155DD'
-                        }
-                       }} />
-      </View>
-    )
-  }
-
-}
-
-
-AppRegistry.registerComponent('Simple', () => Simple)
+AppRegistry.registerComponent('tale', () => tale);
