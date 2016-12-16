@@ -12,111 +12,111 @@ var styles = StyleSheet.create({
 	},
 	settingsText: {
 		fontSize: 16,
-        alignSelf:'center',
-        color:'white'
-    },
-    row: {
-      flexDirection: 'column',
-      padding: 10,
-      backgroundColor: 'transparent',
-      marginBottom:10,
+    alignSelf:'center',
+    color:'white'
+  },
+  row: {
+    flexDirection: 'column',
+    padding: 10,
+    backgroundColor: 'transparent',
+    marginBottom:10,
   },
   thumb: {
-      width: 64,
-      height: 64,
+    width: 64,
+    height: 64,
   },
   text: {
-      flex: 1,
+    flex: 1,
   },
   answerHeaderText: {
-      fontSize: 16,
-      padding: 4,
+    fontSize: 16,
+    padding: 4,
   },
   multiline: {
-      height: 60,
-      fontSize: 16,
-      padding: 4,
-      marginBottom: 10,
+    height: 60,
+    fontSize: 16,
+    padding: 4,
+    marginBottom: 10,
   },
   imageContainer: {
-      flex: 1,
-      alignItems: 'stretch'
+    flex: 1,
+    alignItems: 'stretch'
   },
   backgroundImage: {
-      width: width,
-      height: height
+    width: width,
+    height: height
   },
   textBox : {
-      marginTop: 10,
-      marginLeft: 10,
-      marginRight: 10,
-      backgroundColor: 'white',
-      padding: 10,
-      width:width-40,
-      alignSelf: 'center',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: 'white',
+    padding: 10,
+    width:width-40,
+    alignSelf: 'center',
   },
   answerHeader: {
-      marginTop:60,
-      padding:10,
-      width:width-40,
-      backgroundColor:'white',
-      alignSelf:'center',
+    marginTop:60,
+    padding:10,
+    width:width-40,
+    backgroundColor:'white',
+    alignSelf:'center',
   },
   answerEditBox : {
-      marginLeft:10,
-      marginRight:10,
-      backgroundColor:'white',
-      padding:10,
-      width:width-40,
-      alignSelf:'center',
+    marginLeft:10,
+    marginRight:10,
+    backgroundColor:'white',
+    padding:10,
+    width:width-40,
+    alignSelf:'center',
   },
   rowTextTop: {
-      marginBottom:10,
-      color:'white',
-      fontSize:10
+    marginBottom:10,
+    color:'white',
+    fontSize:10
   },
   rowTextMain: {
-      color:'white',
-      fontSize:15
+    color:'white',
+    fontSize:15
   },
   mainText: {
-      color: 'black',
-      fontSize: 20
+    color: 'black',
+    fontSize: 20
   },
   mainContainer: {
-      flex: 4,
-      flexDirection: 'column',
-      marginTop:100
+    flex: 4,
+    flexDirection: 'column',
+    marginTop:100
   },
   leftNavButtonText: {
-      fontSize: 16,
-      marginLeft:18,
-      marginTop:10,
-      color:'white'
+    fontSize: 16,
+    marginLeft:18,
+    marginTop:10,
+    color:'white'
   },
   rightNavButtonText: {
-      fontSize: 16,
-      marginRight:18,
-      marginTop:10,
-      color:'white'
+    fontSize: 16,
+    marginRight:18,
+    marginTop:10,
+    color:'white'
   },
   nav: {
-      height: 60,
-      backgroundColor: 'transparent'
+    height: 60,
+    backgroundColor: 'transparent'
   },
   title: {
-      marginTop:4,
-      fontSize:16
+    marginTop:4,
+    fontSize:16
   },
   button: {
-      height:60,
-      marginBottom:10,
-      backgroundColor: '#efefef',
-      justifyContent: 'center',
-      alignItems: 'center'
+    height:60,
+    marginBottom:10,
+    backgroundColor: '#efefef',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   buttonText: {
-      fontSize:18
+    fontSize:18
   }
 });
 
@@ -168,46 +168,46 @@ var MOCKED_DATE_DATA = [
 var NavigationBarRouteMapper = {
 	Title(route, navigator, index, navState) {
         // return <Text style={ styles.title }>MY APP TITLE</Text>
-    },
-    LeftButton(route, navigator, index, navState) {
-    	if(index > 0) {
-    		return (
-    			<View style={{flex: 1, flexDirection: 'row'}}>
-    			<TouchableHighlight style={{backgroundColor:'transparent'}}
-    			underlayColor="transparent"
-    			onPress={() => { if (index > 0) { navigator.pop() } }}>
-    			<Image
-    			style={{overflow:'visible', width:30, height:30, marginLeft:18, marginTop:5}}
-    			source={require('./img/back_btn.png')}/>
-    			</TouchableHighlight>
-    			<Image
-    			style={{overflow: 'visible',  width: 30, height: 30, marginLeft:16, marginTop:5}}
-    			source={require('./img/small_fox.png')}/>
-    			</View>
-    			)}
-    		else { return null }
-    	},
+      },
+      LeftButton(route, navigator, index, navState) {
+       if(index > 0) {
+        return (
+         <View style={{flex: 1, flexDirection: 'row'}}>
+         <TouchableHighlight style={{backgroundColor:'transparent'}}
+         underlayColor="transparent"
+         onPress={() => { if (index > 0) { navigator.pop() } }}>
+         <Image
+         style={{overflow:'visible', width:30, height:30, marginLeft:18, marginTop:5}}
+         source={require('./img/back_btn.png')}/>
+         </TouchableHighlight>
+         <Image
+         style={{overflow: 'visible',  width: 30, height: 30, marginLeft:16, marginTop:5}}
+         source={require('./img/small_fox.png')}/>
+         </View>
+         )}
+        else { return null }
+      },
     RightButton(route, navigator, index, navState) {
     	if(route.component == AnswerEdit) {
     		return (
-                <TouchableHighlight style={{backgroundColor:'transparent'}}
-                underlayColor="transparent"
-                onPress={() => {
-                    navigator.resetTo({
-                      component: Question,
-                      passProps: {
-                       id: 'Question',
-                       main: '내용',
-                   },
-                   onPress: this.onPress,
-                   rightText: 'ALERT!',
-               })}}>
+          <TouchableHighlight style={{backgroundColor:'transparent'}}
+          underlayColor="transparent"
+          onPress={() => {
+            navigator.resetTo({
+              component: Question,
+              passProps: {
+               id: 'Question',
+               main: '내용',
+             },
+             onPress: this.onPress,
+             rightText: 'ALERT!',
+           })}}>
 
-                    <Image
-                    style={{overflow:'visible', width:30, height:30, marginRight:18, marginTop:5}}
-                    source={require('./img/check_btn.png')}/>
-                    </TouchableHighlight>
-                    )}
+            <Image
+            style={{overflow:'visible', width:30, height:30, marginRight:18, marginTop:5}}
+            source={require('./img/check_btn.png')}/>
+            </TouchableHighlight>
+            )}
     		else if(index == 0) {
     			return (
     				<TouchableHighlight style={{backgroundColor:'transparent'}}
@@ -252,42 +252,42 @@ var NavigationBarRouteMapper = {
     			text: '',
     		};
     		this.writeProcess = this.writeProcess.bind(this);
-            this.getText = this.getText.bind(this);
-        }
-        writeProcess() {
-          console.log("writeProcess 진입");
+        this.getText = this.getText.bind(this);
+      }
+      writeProcess() {
+        console.log("writeProcess 진입");
       }
 
       getText() {
         return 'haha';
+      }
+
+      render() {
+        return (
+         <View style ={styles.imageContainer}>
+         <Image
+         style={styles.backgroundImage}
+         source={require('./img/main_bg_img.png')}>
+
+         <View style={styles.answerHeader}>
+         <Text style={styles.answerHeaderText}>{this.props.question}</Text>
+         </View>
+         <View style={styles.answerEditBox}>
+         <TextInput
+         autoFocus={true}
+         placeholder="* 이 곳에 당신의 이야기를 적어보세요.`"
+         style={styles.multiline}
+         multiline = {true}
+
+         onChangeText={(text) => this.setState({text})}
+         value={this.state.text}
+         />
+         </View>
+         </Image>
+         </View>
+         );
+      }
     }
-
-    render() {
-      return (
-       <View style ={styles.imageContainer}>
-       <Image
-       style={styles.backgroundImage}
-       source={require('./img/main_bg_img.png')}>
-
-       <View style={styles.answerHeader}>
-       <Text style={styles.answerHeaderText}>{this.props.question}</Text>
-       </View>
-       <View style={styles.answerEditBox}>
-       <TextInput
-       autoFocus={true}
-       placeholder="* 이 곳에 당신의 이야기를 적어보세요.`"
-       style={styles.multiline}
-       multiline = {true}
-
-       onChangeText={(text) => this.setState({text})}
-       value={this.state.text}
-       />
-       </View>
-       </Image>
-       </View>
-       );
-  }
-}
 
      //미리 작성한 답변 보기 클래스
      class AnswerText extends Component {
@@ -437,11 +437,11 @@ var NavigationBarRouteMapper = {
      			component: AnswerEdit,
      			passProps: {
      				id: 'AnswerEdit',
-                    question: this.state.question,
-                },
-                onPress: this.onPress,
-                rightText: 'ALERT!'
-            })}
+            question: this.state.question,
+          },
+          onPress: this.onPress,
+          rightText: 'ALERT!'
+        })}
 
 
      	//다른 질문 보여줘 버튼 클릭 이벤트
@@ -518,50 +518,50 @@ var NavigationBarRouteMapper = {
     			</View>
     			</TouchableHighlight>
     			);
-           }
+       }
 
-           _pressRow(rowID: number){
-              this.props.navigator.push({
-                 component: AnswerText,
-                 passProps: {
-                    id: 'AnswerList',
-                    question: MOCKED_QUESTIONS_DATA[rowID].question,
-                    answer:''
-                },
-                onPress: this.onPress,
-                rightText: 'ALERT!'
-            });
-        }
+       _pressRow(rowID: number){
+        this.props.navigator.push({
+         component: AnswerText,
+         passProps: {
+          id: 'AnswerList',
+          question: MOCKED_QUESTIONS_DATA[rowID].question,
+          answer:''
+        },
+        onPress: this.onPress,
+        rightText: 'ALERT!'
+      });
     }
+  }
 
 
 
-    //기본 클래스
-    export default class App extends Component {
-       constructor(props) {
-          super(props);
-          this.state = {
-             question: MOCKED_QUESTIONS_DATA[0].question,
-             position : 0,
-             isWriting : false
-         };
-     }
+  //기본 클래스
+  export default class App extends Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+     question: MOCKED_QUESTIONS_DATA[0].question,
+     position : 0,
+     isWriting : false
+   };
+ }
 
-     render() {
-      return (
-      <Navigator
-      style={{flex:1}}
-      initialRoute={{name: 'Question', component: Question}}
-      renderScene={ this.renderScene }
-      navigationBar={
-        <Navigator.NavigationBar
-        style={ styles.nav }
-        routeMapper={NavigationBarRouteMapper} />}
-        />
-        )
-    }
-    renderScene(route, navigator) {
-      return <route.component {...route.passProps} navigator={navigator} />}
+ render() {
+  return (
+  <Navigator
+  style={{flex:1}}
+  initialRoute={{name: 'Question', component: Question}}
+  renderScene={ this.renderScene }
+  navigationBar={
+    <Navigator.NavigationBar
+    style={ styles.nav }
+    routeMapper={NavigationBarRouteMapper} />}
+    />
+    )
+  }
+  renderScene(route, navigator) {
+    return <route.component {...route.passProps} navigator={navigator} />}
   }
 
   AppRegistry.registerComponent('AwesomeProject', () => App);
